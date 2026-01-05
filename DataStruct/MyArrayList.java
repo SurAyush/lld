@@ -70,7 +70,7 @@ public final class MyArrayList<T> implements MyList<T> {
         arr[index] = element;
     }
 
-    public boolean remove(int index){
+    public T remove(int index){
         if(index<0 || index>=current_index){
             throw new IndexOutOfBoundsException("Index: "+index+", Size: "+current_index);
         }
@@ -78,7 +78,7 @@ public final class MyArrayList<T> implements MyList<T> {
             arr[i] = arr[i+1];
         }
         current_index--;
-        return true;
+        return arr[current_index];
     }
 
     public String toString(){

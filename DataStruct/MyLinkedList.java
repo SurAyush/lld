@@ -2,9 +2,9 @@ package DataStruct;
 
 public class MyLinkedList<T> implements MyList<T> {
 
-    private class Node {
+    static class Node<T> {
         T data;
-        Node next;
+        Node<T> next;
         
         Node(T data) {
             this.data = data;

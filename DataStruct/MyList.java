@@ -6,5 +6,5 @@ public interface MyList<T> {
     int size();
     void clear();
     void put(int index, T element);
-    boolean remove(int index);
+    T remove(int index);
 }
