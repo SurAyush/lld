@@ -1,0 +1,155 @@
+In UML class diagrams, relationships show how classes are connected or interact.
+
+1. Inheritance (Generalization)
+
+“Is-a” relationship
+One class inherits attributes and methods from another
+Represents specialization
+
+Example
+Dog is a Animal
+Car is a Vehicle
+
+UML Notation
+Solid line
+Hollow triangle arrow pointing to the parent class
+Dog ─────────▷ Animal
+
+
+Key Points
+Child class reuses parent behavior
+Supports polymorphism
+
+
+2. Association
+
+“Uses / knows about” relationship
+One class is connected to another
+No ownership implied
+Can be one-to-one, one-to-many, many-to-many
+
+Example
+Teacher teaches Student
+Customer places Order
+
+UML Notation
+Solid line
+Optional arrow to show direction
+Multiplicity shown near class ends
+Teacher ───────── Student
+        1        0..*
+
+
+Key Points
+Objects can exist independently
+Weak relationship
+
+
+3. Aggregation
+
+“Has-a” relationship (weak ownership)
+
+A special type of association
+One class contains another, but contained object can exist independently
+
+Example
+Team has Players
+Library has Books
+
+UML Notation
+Solid line
+Hollow diamond on the owner side
+Team ◇──────── Player
+
+
+Key Points
+Child can exist without parent
+Whole–part relationship
+
+
+4. Composition
+
+“Has-a” relationship (strong ownership)
+
+Stronger form of aggregation
+Contained object cannot exist without the owner
+
+Example
+House has Rooms
+Order has OrderItems
+
+UML Notation
+Solid line
+Filled diamond on the owner side
+
+House ◆──────── Room
+
+
+Key Points
+Lifecycle dependency
+When parent is destroyed, children are destroyed
+
+
+5. Dependency
+
+“Depends on” relationship
+
+One class temporarily uses another
+Often via method parameters or local variables
+
+Example
+Service uses Logger
+Controller uses Repository
+
+UML Notation
+Dashed line
+Arrow pointing to the depended-on class
+Service - - - -> Logger
+
+
+Key Points
+Weakest relationship
+Changes in supplier may affect the client
+
+
+6. Realization (Interface Implementation)
+
+“Implements” relationship
+A class implements an interface
+
+Example
+PaymentService implements IPayment
+
+UML Notation
+Dashed line
+
+Hollow triangle pointing to the interface
+PaymentService - - - -▷ IPayment
+
+
+Key Points
+Used with interfaces
+Similar to inheritance but for contracts
+
+
+7. Reflexive Association (Self-Association)
+
+Class related to itself
+
+Example
+Employee manages Employee
+Node connects to Node
+
+UML Notation
+Association line looping back to the same class
+
+Employee ─── manages ─── Employee
+
+Quick Comparison Table
+Relationship	Strength	Ownership	Lifecycle Dependent
+Dependency	Very weak	        No	        No
+Association	Weak	            No	        No
+Aggregation	Medium	         Yes (weak)	    No
+Composition	Strong	         Yes (strong)	Yes
+Inheritance	Strong	             N/A	    N/A
+Realization	Strong	             N/A	    N/A
