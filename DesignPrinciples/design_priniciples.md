@@ -1,3 +1,19 @@
+# Design Principles
+
+Design principles are fundamental, language-independent guidelines that help developers design software systems that are maintainable, flexible, scalable, testable and easy to understand.
+
+Without principles, software tends to:
+- Become tightly coupled
+- Be hard to modify
+- Break existing code when requirements change
+- Be difficult to test and reuse
+
+Some key properties of Design Principles are:
+- High level in nature
+- Focus on intent not implementation (Abstract)
+- Universal
+
+---
 
 # 1️⃣ SOLID Principles (Core of LLD)
 
