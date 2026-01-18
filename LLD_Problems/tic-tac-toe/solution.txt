@@ -1,0 +1,48 @@
+We have to build a tic-tac-toe game from scrath with the following Requirements in mind.
+The main class is Game class.
+Using SRP (Single Responsibilty Principle) - we will keep one Responsibilty to one class.
+There would be a Board class that maintains the m*n grid of tic-tac-toe.
+We would have the rules passes using a strategy pattern for easy extensibility and change in rules in future.
+There would be Players class to represent the players of the game. It would also have a update() method following the Observer Design Pattern for notification updates.
+We would also make a GameBuilder as a builder to create Game objects.
+
+Classes/Interfaces:
+
+class Game:
+    Board board;
+    deque<Players> players;
+    Rule rule;
+    boolean isOver;
+    int numOfPlayers;
+
+    play()
+    notifyObservers()
+
+class Players:
+    String name;
+    char symbol;
+
+interface Rules:
+    boolean isWin(Board b, symbol);
+    booleam isDraw(Board b);
+
+class StandardRules implements Rules:
+    boolean isWin(Board b, symbol);
+    booleam isDraw(Board b);
+
+class Board:
+    private final int m, n;
+    private final char[][] board;
+
+    void mark(x,y,symbol)
+    char get(x,y)
+    show()
+
+class GameBuilder:
+    setSize(int m, int n)
+    setPlayerCount(int x)
+    addPlayers(Player p)
+    setRule(String rule)
+    build()
+
+

@@ -1,0 +1,5 @@
+Create a tic-tac-toe game.
+Requirements:
+1. Board size and players should be scalable
+2. Rules should be extensible
+3. Any win/lose/draw result should be notified to the observers.
