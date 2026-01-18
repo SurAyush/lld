@@ -1,4 +1,5 @@
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -183,6 +184,7 @@ class Game{
         private Rules rules;
         private ArrayList<Observer> observers;
         private int count;
+        private HashSet<Character> usedSymbols = new HashSet<>(); 
 
         public GameBuilder setBoard(int m, int n){
             if(m<1 || n<1){
@@ -207,6 +209,13 @@ class Game{
             if(this.players.size() >= count){
                 System.out.println("Cannot add more players than the specified count");
             }
+            if(symbol == '-'){
+                throw new IllegalArgumentException("Symbol '-' is reserved for empty cells");
+            }
+            if(usedSymbols.contains(symbol)){
+                throw new IllegalArgumentException("Symbol already taken by another player");
+            }
+            usedSymbols.add(symbol);
             this.players.offerLast(new Player(name, symbol));
             return this;
         }
