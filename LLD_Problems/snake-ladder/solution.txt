@@ -1,0 +1,67 @@
+We have to desing a snake and ladder game keeping scalability and extensibility in mind.
+We should adhere with the desing principles like SRP...
+Using a top-bottom approach to identify the important classes required.
+
+class Game:
+    Board b;
+    deque<Player> players;
+    List<Observer> observers;
+    Dice d;
+    map<Player,Integer> positions;
+    Rules r;
+    boolean isActive;
+    
+    void play()
+    void notify()
+
+
+class Board:
+    int size;
+    map<start, BoardElement> elements;
+    Arrangement strategy;
+
+class Dice:
+    private final int faces;
+    
+    Dice constructor(faces);
+    int roll()
+
+interface IObserver:
+    void update()
+
+class Observer implement IObserver:
+    void update()
+
+
+class Player:
+    String name;
+
+interface BoardElement:
+    void show()
+
+class Snake implement BoardElement:
+    int start;
+    int end;
+    void show();
+
+class Ladder implement BoardElement:
+    int start;
+    int end;
+    void show();
+
+interface Arrangement:
+    void populate()
+
+class StandardArrangement implement Arrangement:
+    void populate()
+
+class RandomArrangement implement Arrangement:
+    void populate()
+
+class CustomArrangement implement Arrangement:
+    void populate()
+
+class Rules:
+    boolean isValidMove(val,oldPos)
+    int move(val, oldPos)
+    boolean hasWin(pos)

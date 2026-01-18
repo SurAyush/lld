@@ -1,0 +1,6 @@
+Design a snake and ladder game.
+The game should have the following characteristics:
+- The board size and player count should be scalable
+- The board arragement can be standard, random or custom based on user's choice.
+- The game rule should be extensible 
+- Any win/draw should be notified to observers
