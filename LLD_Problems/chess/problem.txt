@@ -1,0 +1,11 @@
+Design a game like chess.com
+It should have the following functionalities:
+- Matchmaking with extensible strategies like ScoreBased Matchmaking
+- Rules should be extensible
+- A full chess game with pieces and moves -- following standard design principles
+
+Note: This is a very vast question and the entirety will never be asked in an interview.
+This is a hard problem and if asked communicate well with the interviewer with which parts of the problem is he interested in --
+Implement the problem in parts as per the interview's interest.
+
+(Skip the concurrency parts of Matchmaking -- focus on the game)

@@ -1,0 +1,86 @@
+So, as per our problem we have to build a chess game with Matchmaking as extensed functionalities.
+Rules should be extensible -- interface of rules with StandardRules as a concrete implemenation.
+Pieces: interfaces with concrete classes - rook, bishop, knight, queen, king, pawn
+Matchmaking will follow a strategy pattern with ScoreBased Matchmaking as one algorithm.
+As stated in the problem, we will Skip the concurrency parts of Matchmaking -- focus on the game
+Using Top Down approach to identify the core elements.
+
+Singleton class
+class GameManager:
+    list<Game> activeGames;      // to track active active Games 
+    list<Users> waiting;            // also be made a priorityQueue to find closest ELO player
+    Matchmaking algorithm;
+    GameFactory gf;
+
+    Game play(User user);
+    Game playWithFriend(User user1, User user2);
+
+
+class Users:
+    final int userId;
+    String name;
+    int elo;
+    int tolerance;
+
+
+interface Matchmaking:
+    Game makeMatch(GameFactory gf, User curr, list<users> waiting);
+
+class ELOBasedMatchMaking implements Matchmaking:
+    Game makeMatch(GameFactory gf, User curr, list<users> waiting);
+
+class GameFactory:
+    Game makeGame(User u1, User u2)
+
+
+class Game:
+    Board board;
+    User firstPlayer, secondPlayer;
+    boolean firstPlayerTurn;
+    Rule basicRules;
+
+    move(Pieces pie, Position pos)
+
+
+class Board:
+    Pieces[8][8] pieces;
+    
+    void initialize()
+    getPiece(Pos p)
+    removePiece(Pos p)
+    setPiece(Piece pi, Pos p)
+    movePiece(Pos in, Pos fin)
+    display()
+
+interface Pieces:
+    Color getColor()
+    getMoves()
+    getCaptureMoves()
+    getPieceType()
+
+class Pawns implements Pieces;
+class Queen implements Pieces;
+class King implements Pieces;
+class Bishop implements Pieces;
+class Knight implements Pieces;
+class Rook implements Pieces;
+
+class Position:
+    int row;
+    int col;
+
+interface Rules:
+    boolean isValidMove(Board b, Position from, Position to)
+    boolean isCheck(Board b, Color c)
+    boolean isCheckMate(Board b, Color c)
+    boolean isStaleMate(Board b, Color c)
+
+enum Color:
+    WHITE
+    BLACK
+
+class Move:
+    Position from, to;
+    boolean canCapture, canMove;
+
+
