@@ -1,0 +1,5 @@
+Design a parking lot management system with following requirements:
+- Supports multiple Vehicle Types
+- Supports multiple payment methods
+- Supports multi-floor parking 
+

@@ -1,0 +1,67 @@
+We have to design a parking lot management system with the following requirements.
+We would have multiple payment support using Strategy Design Pattern.
+We would have multiple Vehicle types with a common Vehicle abstract class.
+We would have mutiple parking floors - each floor will be multiple ParkingSlots.
+ParkingSlots will be of various types -> Car, Bike, etc.
+We would not focus on concurrency for the question.
+
+We would have a orchestration class - ParkingManager -- Singleton
+
+class ParkingManager:
+    List<ParkingFloors> floors;
+    FeeCalculator standardCalculator;
+    List<Ticket> alltickets;
+
+    private ParkingSlot getSlot(SlotType type)
+    Ticket enter()
+    int getParkingFee(Ticket t)
+    boolean pay(PaymentStrategy ps)
+
+
+class Ticket:
+    ParkingSlot parking;
+    Vehicle vehicle;
+    LocalDateTime enter, exit;
+    Duration duration;
+    boolean hasPaid;
+
+
+class ParkingFloors:
+    List<ParkingSlots>
+    int floor_number;
+
+    ParkingSlot getSlot(SlotType type)
+
+class ParkingSlots:
+    SlotType type;
+    int id;
+    boolean isFree;
+
+enum SlotType:
+    Car
+    Bike 
+
+enum VehicleType:
+    Car 
+    Bike
+
+abstract class Vehicle:
+    String licesePlate;
+
+class Car extends Vehicle:
+    VehicleType vt;
+
+interface PaymentStrategy:
+    void pay(int amount)
+
+class PaymentStrategy implements CashPayment:
+    void pay(int amount)
+
+interface FeeCalculator:
+    int getFee(Ticket ticket)
+
+Optional:
+
+We can use factory design pattern to further streamline the consistent creation of Vehicle objects
+We can use Builder design pattern to easyily create ParkingFloors with variable ParkingSlots.
+We can further build observer design pattern to nitify vehicle (registered mail/number) with a exit notification
