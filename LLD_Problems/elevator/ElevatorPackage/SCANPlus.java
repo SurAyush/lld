@@ -48,6 +48,11 @@ public class SCANPlus implements Algorithm {
                 if(!upQueue.isEmpty()){
                     return upQueue.peek().getFloor();
                 }
+                else{
+                    if(!downQueue.isEmpty()){
+                        return downQueue.peek().getFloor();
+                    }
+                }
             } 
             else if(!downQueue.isEmpty()){
                 return downQueue.peek().getFloor();
@@ -65,6 +70,11 @@ public class SCANPlus implements Algorithm {
                 }
                 if(!downQueue.isEmpty()){
                     return downQueue.peek().getFloor();
+                }
+                else{
+                    if(!upQueue.isEmpty()){
+                        return upQueue.peek().getFloor();
+                    }
                 }
             } 
             else if(!upQueue.isEmpty()){
