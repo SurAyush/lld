@@ -1,0 +1,75 @@
+We have to build an elevator system in a multi-storeyed building...
+We can have n elevators and m floors;
+The elevator will be run by some Elevaor Algorithm which can be made easily extensible and loosely coupled using Strategy Design Pattern.
+There will be screens on each floor, control room where present floor and direction will be there - Observer Design Pattern 
+We will encapsulate the reuqest - internal (destination) and external (source and direction) using Command Design Pattern
+
+We will assume a real world scenario where each screen+buttons in a floor is associated with an elevator -- Tradtional Elevator
+The ElevatorManager is just a manager that has a list of all_elevators - a central repo. 
+
+Identifying the key entities:
+
+class ElevatorManager
+    List<Elevator> all_elevators;
+
+
+enum Direction:
+    UP
+    DOWN
+
+enum Elevator_State:
+    UP
+    DOWN
+    IDLE
+
+
+class Elevator:
+    String id;
+    int speed;
+    Elevator_State direction;
+    int current_floor;
+    Algorithm algorithm;
+    List<Observer> obs;
+
+    addRequest()
+    step()
+    opendoor()
+
+
+interface Request:
+    void execute()
+
+class InternalRequest:
+    int destination;
+    private Elevator el;
+
+    execute()  // add itself on the queue
+
+class ExternalRequest:
+    Direction dir;
+    int source;
+    private Elevator el;
+
+    execute()  // add itself on the queue
+
+interface Observers;
+    void notify();
+
+interface Algorithm:
+    int getNextStop(Elevator_State direction, int current_floor, Queue<Request> q)
+    void onRequest()
+    void onarrive()
+
+class FCFS extends Algorithm;
+class SCAN extends Algorithm;
+class mSCAN extends Algorithm;
+
+
+interface Observers;
+    void update();
+
+class Floors implements Observers:
+    void update()
+
+class ElevatorFactory
+    Elevator createElevator(id, speed, type)
