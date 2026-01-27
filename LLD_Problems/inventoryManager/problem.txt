@@ -1,0 +1,6 @@
+Design and implement an inventory management system.
+
+- There will be multiple warehouses storing various products of different kinds.
+- Design a stock checker that alerts for low stock of products.
+- Product stock replenishment can follow different strategies.
+

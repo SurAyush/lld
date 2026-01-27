@@ -1,0 +1,66 @@
+We need to build an inventory manager
+Products --> warehouses --> inventory
+inventory -> single instance as a manager --- singleton design pattern
+
+Each Product represents a chunk og same items (100 packets of Lays)
+
+Products will have different ways to replenish, -- strategy Design pattern  -- Bulk & JustInTime
+Product will belong to different categories --> extended class
+
+Observer Design Pattern to notify observers regarding low stock alerts.
+
+We can use Builder Desing Pattern to build complex product.
+
+class InventoryManager -- singleton
+    List<Warehouse> warehouses;
+    List<Observer> observers;
+
+    addWarehouse(Warehouse w)
+    removeWarehouse(Warehouse w)
+    addObs(Observer o)
+    removeObs(Observer o)
+    findProduct(pid)
+    scanInv()
+    replenish()
+    notifyObserver()        // regarding alters and replenishment
+    addProduct(Warehouse w, Product p)
+
+
+class Warehouse:
+    List<Product> products;  
+    int wid;
+    String location;
+
+    addProduct(Product p)  
+    scanWare()
+    replenish()
+
+
+abstract class Product:
+    String pid;             // same id multiple product (id --> Lays's Blue Family Pack, all warehouse can have)
+    int quantity;
+    int threshold;
+    Replenish strategy;
+
+    replenish()         // we are assuming immediate stock updation on replenish
+    add(int q)
+    remove(int q)
+    
+
+class ElectronicsProduct extends Product:
+    int warranty;
+    int batteryLife;...
+
+interface Observer:
+    void update;
+
+class ConsoleObserver implements Observer:
+class MailObserver implements Observer;
+
+interface Replenish:
+    int refill()
+
+class BulkReplenish:
+class JITReplenish
+
+We can also use Builder pattern to build products if time sustains.
