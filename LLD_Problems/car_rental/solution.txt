@@ -1,0 +1,64 @@
+We have to build a car rental system.
+There would be a Manager that would be the orchestation class that would manage all reservations. -- SIngleton Class
+There would be store avaialbe at different locations  with a set of vechicles in them.
+We would make it general: Vechicle <- Car 
+There would be various pricing strategy - hourly, daily --> strategy desing pattern
+We would use the same desing pattern for various payment gateways too.
+
+We would support 
+- reservation() -- to book the car with a x% fee
+- cancel() -- cancel reservation
+- pay() -- checkout car with remaining fees.
+
+We could also use Factory DP to create Vechicle objects
+We could also use Observer DP to inform the users regarding the booking and cancellation and all.
+
+@ SIngleton
+class VehicleRentalManager:
+    Map<store_id, Store> all_stores;
+    Map<UUID,Booking> bookings;
+    Map<String, Booking> vehcile_bookings;
+    double locking_per;    // we can use strategy here also
+
+    get_available(City, Duration, PricingStrategy)
+    reserve(String, PricingStrategy, PaymentStrategy, amount)
+    cancel(UUID)
+    checkout(UUID, PaymentStrategy, amount)
+
+class Store:
+    City city;   // enum 
+    int pincode;
+    String address;
+    Map<Reg_id, Vechicle> all_vehicles;
+
+    get_all()
+
+class Vechicle:
+    String reg_id;
+    int per_hour, per_day;
+
+class Car extends Vehicle:
+    String lic_plate;
+    int no_of_doors;
+    CarType cartype;     // enum
+
+class User:
+    int id;
+    String name;
+
+class Booking:
+    UUID booking_id;
+    User u;
+    Vechicle v;
+    Duration d;
+    Store s;
+
+class Duration:
+    LocalDateTime start, end;
+
+interface PricingStrategy:
+    get_cost(int n, double rate)
+
+interface PaymentStrategy:
+    pay(double amount)
+

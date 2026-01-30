@@ -1,0 +1,3 @@
+Design a car rental system where users can rent car with various pricing strategy (hourly, daily, etc)
+There would be multiple car stores each having a collections of cars available for renting.
+Make a system where user could reserve car, calculate fee, etc.
