@@ -1,0 +1,66 @@
+We have a implement a vending machine LLD.
+The vending machine can exist in a few countable states and possess different behaviour based of it's states.
+So a state desing pattern would be a great fit for the desing.
+Coin === Money
+We would maintain a coin Inventory
+We would also have an exchange strategy class to get refunds if possible (transaction cancelled if not possible) after dispening -- strategy Desing Pattern
+
+
+@ Singleton
+class VendingMachine:
+    State noCoinState, HasCoinState, dispenseState;
+    State currentState;
+    Map<Integer,Product> prod;
+    Map<Product, Integer> prod_freq;
+    Map<Product, Integer> prod_cost;
+
+    VendingMachine()
+    insertcoin(Currency, int)
+    selectItem(int)
+    dispense()
+    fill(Product,Integer)
+    refill(id, Integer)
+    refund()
+
+interface State{
+    insertcoin()
+    selectItem()
+    dispense()
+    fill()
+    refill()
+    refund()
+}     -- noCoinState, HasCoinState, dispenseState
+
+class Product{
+    int id;
+    int price;      // no of coins 
+    String name;
+}
+
+enum Currency{
+    TEN, FIVE, ONE, TWO, FIFTY, HUNDRED, TWO_HUNDRED, FIVE_HUNDRED 
+}
+
+@Singleton
+class CoinInventory{
+    Map<Currency, Integer> content;
+    add(Currency, Integer)
+    remove(Currency, Integer)
+}
+
+interface interface ExchangeStrategy{
+    boolean isPossible(CoinInventory, amount)
+    Map<Currency, Integer> exchange(CoinInventory, amount)
+}
+
+
+Place of expansion
+
+- We can make AdminMode and UserMode and use state design pattern there also
+- VendingMachine -> MachineMode -> State  (delegation)  : 1 additonal layer added 
+
+
+
+
+
+    
