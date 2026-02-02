@@ -1,0 +1,37 @@
+We have a design a simple logger with extesnible appenders and formatters...
+The main orchestration class would be Logger -- Singleton in nature.
+
+@Singleton
+class Logger:
+    Handler basicHandler;
+    log(LogLevel, String)
+
+We would have an enum of LogLevel  -- INFO, WARN, ERROR, ...
+
+class LogMessage:
+    String msg;
+    LocalDateTime timestamp;
+    LogLevel level;
+
+We would make a chain of responsiblity design pattern to pass the LogMessage from one handler to another
+
+class Handler:
+    List<Appender> appenders;
+    Handler next;
+    Predicate<LogMessage> pred;
+
+    handle(LogMessage)
+
+
+abstract class Appender:
+    Formatter f;
+    abstract void append(LogMessage)
+
+We would interchangeably use various appenders along with formatters using Strategy Desing Pattern.
+
+We would also keep a Predicate<LogMessage> that determines whether to resolve or pass.
+We could have also used this using subclasses for every LogLevel but using Predicate gives us a lot more flexibility.
+
+
+
+

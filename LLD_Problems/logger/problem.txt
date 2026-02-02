@@ -1,0 +1,2 @@
+Desing a simple logger which supports extesnible logging levels, appenders (console, file) and formatters (text, json, etc).
+Keep it single threaded.
