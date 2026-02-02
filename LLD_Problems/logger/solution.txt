@@ -16,16 +16,21 @@ class LogMessage:
 We would make a chain of responsiblity design pattern to pass the LogMessage from one handler to another
 
 class Handler:
-    List<Appender> appenders;
+    List<Output> outputs;
     Handler next;
     Predicate<LogMessage> pred;
 
     handle(LogMessage)
 
-
-abstract class Appender:
+class Output:
+    Appender a;
     Formatter f;
-    abstract void append(LogMessage)
+
+interface Appender:
+    void append(String)
+
+interface Formatter:
+    String format(LogMessage)
 
 We would interchangeably use various appenders along with formatters using Strategy Desing Pattern.
 
