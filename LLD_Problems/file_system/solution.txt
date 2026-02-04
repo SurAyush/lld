@@ -1,0 +1,53 @@
+We would create a simple filesytem which could perform CRUD operations.
+- create files and folders
+- remove files and folders 
+- update file and folders 
+- read file contents and folder contents
+- move files and folders efficiently
+
+We would use the Composite Design Pattern to design the File and Directory under the same interface : FileSystemNode()
+We would make a FileSystemSession that maintains the root and cwd of the current session.
+We would make a FileSystemCommands -- main orchestration class.
+
+
+class FileSystemNode:
+    getName()
+    getsize()
+    isfile()
+    ls()
+
+class FileNode implements FileSystemNode:
+    String name, extension;
+
+    write()
+    read()
+
+class DirectoryNode implements FileSystemNode:
+    Map<String, FileSystemNode> children;
+    DirectoryNode parent;
+    String name;
+
+    addChild()
+    removeChild()
+    getChild()
+    getParent()
+
+class FileSystemSession:
+    DirectoryNode root, cwd;
+    getRoot();
+    getCwd();
+
+We also would use a pathresolver class to resolve string paths.
+
+class Pathresolver:
+    FileSystemNode resolve(String, FileSystemSession)
+
+class FileSystemCommands:
+    FileSystemSession session;
+    pwd()
+    cd(String)
+    ls()
+    mkdir(String)
+    cat(String, String)
+    cp(String, String)
+    mv(String, String)
