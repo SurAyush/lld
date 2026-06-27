@@ -1,0 +1,4 @@
+Design a splitwise like app that maintains personal and group expenses.
+Users can create, join groups, add expenses in group level and also in personal level.
+Split expense should allow different types -- equal, unequal, percentage...
+Also simplify the transaction to minimize the number of transaction.

@@ -50,7 +50,7 @@ public class MyLinkedList<T> implements MyList<T> {
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
-        return current.data;
+        return (T)current.data;
 	}
 	
 	@Override
@@ -72,7 +72,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         T removedData;
         if (index == 0) {
-            removedData = head.data;
+            removedData = (T)head.data;
             head = head.next;
             if (head == null) {
                 tail = null;
@@ -82,7 +82,7 @@ public class MyLinkedList<T> implements MyList<T> {
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
-            removedData = current.next.data;
+            removedData = (T)current.next.data;
             current.next = current.next.next;
             if (current.next == null) {
                 tail = current;

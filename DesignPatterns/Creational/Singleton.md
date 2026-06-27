@@ -114,6 +114,10 @@ class Singleton {
 ✅ High performance
 📌 `volatile` is **mandatory**
 
+> synchronized (Singleton.class) - inside synchronized a object needs to be passed which needs to be locked before entering. className.class is a object representing the class in the JVM. There is a one object for the class. We cannot use 'this' as it a static method. We cannot use 'instance' as in beginning instance is null.
+
+> In the Singleton pattern, the instance variable is declared volatile to prevent threads from using a cached copy of the variable. Without volatile, one thread may create the object while another thread reads an outdated or partially initialized instance from CPU cache due to instruction reordering. volatile forces every thread to read the latest value from main memory, ensuring visibility and thread safety in double-checked locking.
+
 ---
 
 ### 🔹 3. Eager Initialization

@@ -188,7 +188,9 @@ class Penguin implements Bird { }
 
 ### Definition
 
-> Clients should not be forced to depend on methods they do not use.
+> Clients should not be forced to depend on interfaces they do not use.
+
+In practical terms, this means **split large, general-purpose interfaces into smaller specific ones** so that implementing classes only need to del with methods that are relevant.
 
 ---
 
@@ -421,11 +423,11 @@ Add other methods **only when required**.
 # 🔥 How These Work Together in LLD
 
 | Principle | Focus                   |
-| --------- | ----------------------- |
+| --------- |-------------------------|
 | SOLID     | Structure & flexibility |
 | DRY       | Maintainability         |
 | KISS      | Simplicity              |
-| YAGNI     | Avoid overengineering   |
+| YAGNI     | Avoid over-creation     |
 
 ---
 
@@ -433,8 +435,7 @@ Add other methods **only when required**.
 
 When designing systems:
 
-1. Start with **KISS**
-2. Apply **YAGNI**
+1. Start with **KISS** and **YAGNI**. Keep code simple, do not over-engineer, code as much features as required.
 3. Refactor using **SOLID**
 4. Remove duplication using **DRY**
 
